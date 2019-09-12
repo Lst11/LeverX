@@ -21,6 +21,7 @@
         <mysql-connector>5.1.47</mysql-connector>
         <dbcp2>2.7.0</dbcp2>
         <java-transaction>1.1</java-transaction>
+        <jackson>2.9.9.3</jackson>
     </properties>
 
     <build>
@@ -60,6 +61,13 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>${javax.servlet}</version>
             <scope>provided</scope>
+        </dependency>
+
+        <!--JSON Converter-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson}</version>
         </dependency>
 
         <!-- Database -->
