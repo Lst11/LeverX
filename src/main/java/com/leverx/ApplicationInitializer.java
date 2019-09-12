@@ -1,6 +1,7 @@
 package com.leverx;
 
 import com.leverx.config.WebConfig;
+import com.leverx.repository.UserRepository;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
