@@ -1,7 +1,6 @@
 package com.leverx.service;
 
 import com.leverx.entity.Comment;
-import com.leverx.entity.User;
 
 import java.util.List;
 
