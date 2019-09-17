@@ -20,11 +20,20 @@ public class UserController {
         return service.getAll();
     }
 
+    /**
+     * Correct Request example (with required parameters):
+     * {"name":"some name",
+     * "surname":"some surname",
+     * "email":"aaa@bb.com",
+     * "password":"1234",
+     * "role" :"ADMINISTRATOR"}
+     */
     @PostMapping
     @ResponseBody
     public User saveUser(@RequestBody User user) {
         return service.save(user);
     }
+
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -40,7 +49,7 @@ public class UserController {
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     @ResponseBody
-    public List<User>  getUser() {
+    public List<User> getUser() {
         return service.getTopUsers();
     }
 }

@@ -20,6 +20,12 @@ public class GameController {
         return service.getAll();
     }
 
+    /**
+     * Correct Request example (with required parameters):
+     * {"title":"Some game",
+     * "status": "AVAILABLE",
+     * "author": 1}
+     */
     @PostMapping
     @ResponseBody
     public Game saveGame(@RequestBody Game game) {
@@ -38,6 +44,11 @@ public class GameController {
         service.remove(gameId);
     }
 
+    /**
+     * Correct Request example (with parameters that can be changed):
+     * {"title":"Brand new game",
+     * "status": "NOT_AVAILABLE" }
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     @ResponseBody
     public void update(@PathVariable("id") int gameId, @RequestBody Game updatedGame) {

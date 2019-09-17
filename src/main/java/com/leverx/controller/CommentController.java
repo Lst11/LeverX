@@ -20,6 +20,12 @@ public class CommentController {
         return service.getAll();
     }
 
+    /**
+     * Correct Request example (with required parameters):
+     * {"message":"Some comment",
+     * "postId" :  2,
+     * "mark": 1}
+     */
     @PostMapping
     @ResponseBody
     public Comment saveComment(@RequestBody Comment comment) {

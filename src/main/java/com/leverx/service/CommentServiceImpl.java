@@ -15,6 +15,12 @@ public class CommentServiceImpl implements CommentService {
     CommentRepository repository;
 
     @Override
+    public Comment save(Comment comment) {
+        comment.setCreateAt(LocalDateTime.now());
+        return repository.saveAndFlush(comment);
+    }
+
+    @Override
     public List<Comment> getAll() {
         return repository.findAll();
     }
@@ -22,11 +28,5 @@ public class CommentServiceImpl implements CommentService {
     @Override
     public List<Comment> getByPostId(int postId) {
         return repository.getByPostId(postId);
-    }
-
-    @Override
-    public Comment save(Comment comment) {
-        comment.setCreateAt(LocalDateTime.now());
-        return repository.saveAndFlush(comment);
     }
 }

@@ -15,19 +15,9 @@ public class GameServiceImpl implements GameService {
     GameRepository repository;
 
     @Override
-    public List<Game> getAll() {
-        return repository.findAll();
-    }
-
-    @Override
     public Game save(Game game) {
         game.setCreatedAt(LocalDateTime.now());
         return repository.saveAndFlush(game);
-    }
-
-    @Override
-    public List<Game> getByUserId(int userId) {
-        return repository.getByAuthorId(userId);
     }
 
     @Override
@@ -39,5 +29,15 @@ public class GameServiceImpl implements GameService {
     public void update(int gameId, Game updatedGame) {
         updatedGame.setUpdatedAt(LocalDateTime.now());
         repository.update(gameId, updatedGame);
+    }
+
+    @Override
+    public List<Game> getAll() {
+        return repository.findAll();
+    }
+
+    @Override
+    public List<Game> getByUserId(int userId) {
+        return repository.getByAuthorId(userId);
     }
 }

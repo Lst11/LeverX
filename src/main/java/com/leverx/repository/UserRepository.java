@@ -15,7 +15,10 @@ public interface UserRepository extends JpaRepository<User, Integer> {
         List<User> topChart = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             Optional<User> topUser = users.stream().max(new UserComparator());
-            topUser.ifPresent(topChart::add);
+            topUser.ifPresent(user -> {
+                users.remove(user);
+                topChart.add(user);
+            });
         }
         return topChart;
     }

@@ -9,16 +9,24 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-    private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
-
     @Autowired
     UserRepository repository;
+
+    @Override
+    public User save(User user) {
+        user.setCreateAt(LocalDateTime.now());
+        User userResult = repository.saveAndFlush(user);
+        return user;
+    }
+
+    @Override
+    public void remove(int id) {
+        repository.deleteById(id);
+    }
 
     @Override
     public List<User> getAll() {
@@ -27,22 +35,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(int id) {
-        Optional<User> user= repository.findById(id);
+        Optional<User> user = repository.findById(id);
         user.orElseThrow(NoSuchElementException::new);
         return user.get();
-    }
-
-    @Override
-    public User save(User user) {
-        LOGGER.log(Level.INFO, repository.toString());
-        LOGGER.log(Level.INFO, user.toString());
-        user.setCreateAt(LocalDateTime.now());
-        return repository.saveAndFlush(user);
-    }
-
-    @Override
-    public void remove(int id) {
-        repository.deleteById(id);
     }
 
     @Override
