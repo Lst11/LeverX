@@ -5,7 +5,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comment")
@@ -16,22 +16,21 @@ public class Comment {
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name = "increment", strategy = "increment")
+    @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "message", length = 45)
+    @Column(name = "message", length = 45, nullable = false)
     private String message;
 
-    @ManyToOne(targetEntity = com.leverx.entity.User.class)
-    @JoinColumn(name = "id_user", nullable = false)
+    @Column(name = "post_id", nullable = false)
     private int postId;
 
-    @Column(name = "authorId", nullable = false)
+    @Column(name = "authorId")
     private int authorId;
 
-    @Column(name = "create_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createAt;
+    @Column(name = "create_at", nullable = false)
+    private LocalDateTime createAt;
 
     @Column(name = "approved", nullable = false)
-    private Boolean approved;
+    private Boolean approved = false;
 }

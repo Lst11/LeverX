@@ -5,6 +5,7 @@ import com.leverx.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -25,6 +26,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment save(Comment comment) {
+        comment.setCreateAt(LocalDateTime.now());
         return repository.saveAndFlush(comment);
     }
 }

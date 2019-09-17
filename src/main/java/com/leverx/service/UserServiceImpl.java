@@ -5,7 +5,7 @@ import com.leverx.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -26,7 +26,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
-        user.setCreateAt(new Date(System.currentTimeMillis()));
+        user.setCreateAt(LocalDateTime.now());
         return repository.saveAndFlush(user);
     }
 

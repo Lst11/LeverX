@@ -20,6 +20,12 @@ public class CommentController {
         return service.getAll();
     }
 
+    @RequestMapping(method = RequestMethod.POST)
+    @ResponseBody
+    public Comment saveComment(@RequestBody Comment comment) {
+        return service.save(comment);
+    }
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public List<Comment> getAllByPostId(@PathVariable("id") int userId) {
