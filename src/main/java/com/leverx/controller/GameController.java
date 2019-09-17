@@ -14,13 +14,13 @@ public class GameController {
     @Autowired
     private GameService service;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ResponseBody
     public List<Game> getAllGames() {
         return service.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     @ResponseBody
     public Game saveGame(@RequestBody Game game) {
         return service.save(game);

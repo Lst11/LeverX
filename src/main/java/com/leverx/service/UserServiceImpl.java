@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -21,7 +23,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getById(int id) {
-        return repository.findById(id).orElse(null);
+        Optional<User> user= repository.findById(id);
+        user.orElseThrow(NoSuchElementException::new);
+        return user.get();
     }
 
     @Override

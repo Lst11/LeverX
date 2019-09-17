@@ -14,22 +14,22 @@ public class UserController {
     @Autowired
     private UserService service;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ResponseBody
     public List<User> getAllUsers() {
         return service.getAll();
+    }
+
+    @PostMapping
+    @ResponseBody
+    public User saveUser(@RequestBody User user) {
+        return service.save(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public User getUser(@PathVariable("id") int userId) {
         return service.getById(userId);
-    }
-
-    @RequestMapping(method = RequestMethod.POST)
-    @ResponseBody
-    public User saveUser(@RequestBody User user) {
-        return service.save(user);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)

@@ -27,7 +27,7 @@ public class GameServiceImpl implements GameService {
 
     @Override
     public List<Game> getByUserId(int userId) {
-        return null;
+        return repository.getByAuthorId(userId);
     }
 
     @Override

@@ -25,7 +25,7 @@ public class Comment {
     @Column(name = "post_id", nullable = false)
     private int postId;
 
-    @Column(name = "authorId")
+    @Column(name = "author_id")
     private int authorId;
 
     @Column(name = "create_at", nullable = false)

@@ -14,13 +14,13 @@ public class CommentController {
     @Autowired
     private CommentService service;
 
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping
     @ResponseBody
     public List<Comment> getAll() {
         return service.getAll();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
+    @PostMapping
     @ResponseBody
     public Comment saveComment(@RequestBody Comment comment) {
         return service.save(comment);
