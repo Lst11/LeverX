@@ -37,4 +37,10 @@ public class UserController {
     public void delete(@PathVariable("id") int userId) {
         service.remove(userId);
     }
+
+    @RequestMapping(value = "/top", method = RequestMethod.GET)
+    @ResponseBody
+    public List<User>  getUser() {
+        return service.getTopUsers();
+    }
 }

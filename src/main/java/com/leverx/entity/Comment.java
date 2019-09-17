@@ -25,6 +25,9 @@ public class Comment {
     @Column(name = "post_id", nullable = false)
     private int postId;
 
+    @Column(name = "mark", nullable = false)
+    private int mark;
+
     @Column(name = "author_id")
     private int authorId;
 

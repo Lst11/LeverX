@@ -13,4 +13,6 @@ public interface UserService {
     User save(User user);
 
     void remove(int id);
+
+    List<User> getTopUsers();
 }

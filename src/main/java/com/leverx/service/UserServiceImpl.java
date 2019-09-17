@@ -9,9 +9,13 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Service
 public class UserServiceImpl implements UserService {
+
+    private static Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
 
     @Autowired
     UserRepository repository;
@@ -30,6 +34,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User save(User user) {
+        LOGGER.log(Level.INFO, repository.toString());
+        LOGGER.log(Level.INFO, user.toString());
         user.setCreateAt(LocalDateTime.now());
         return repository.saveAndFlush(user);
     }
@@ -37,5 +43,10 @@ public class UserServiceImpl implements UserService {
     @Override
     public void remove(int id) {
         repository.deleteById(id);
+    }
+
+    @Override
+    public List<User> getTopUsers() {
+        return repository.getTop();
     }
 }

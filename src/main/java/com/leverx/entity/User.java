@@ -9,7 +9,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -51,4 +50,12 @@ public class User {
     @JoinColumn(name = "post_id")
     @Type(type = "org.hibernate.type.settype")
     private Set<Comment> comments = new HashSet<Comment>();
+
+    public int getRating() {
+        int sum = 0;
+        for (Comment comment : comments) {
+            sum += comment.getMark();
+        }
+        return sum;
+    }
 }
