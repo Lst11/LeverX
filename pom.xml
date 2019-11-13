@@ -21,7 +21,7 @@
         <mysql-connector>5.1.47</mysql-connector>
         <dbcp2>2.7.0</dbcp2>
         <java-transaction>1.1</java-transaction>
-        <jackson>2.9.9.3</jackson>
+        <jackson>2.9.10.1</jackson>
         <junit>4.12</junit>
     </properties>
 
