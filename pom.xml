@@ -22,7 +22,7 @@
         <dbcp2>2.7.0</dbcp2>
         <java-transaction>1.1</java-transaction>
         <jackson>2.9.9.3</jackson>
-        <junit>4.12</junit>
+        <junit>4.13.1</junit>
     </properties>
 
     <build>
